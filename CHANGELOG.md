@@ -14,3 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Configuração do credo para garantir qualidade
 - Configuração Sobelow para segurança
 - Inclusão de arquivos licença e log para processo de qualidade de projeto
+- Configuração coveralls manter cobertura de testes
+- Adição de ex_doc para gerar documentação
+
+### Changed
+- mudança do arquivo de configuração do credo
+- criando `alias` para manter qualidade código
