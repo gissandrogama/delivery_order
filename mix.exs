@@ -1,16 +1,41 @@
 defmodule OrderApi.MixProject do
   use Mix.Project
 
+  @github_url "https://github.com/gissandrogama/delivery_order.git"
+
   def project do
     [
       app: :order_api,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.11",
+      description: "Parse payload test for Delivery Center test",
+      source_url: @github_url,
+      homepage_url: @github_url,
+      files: ~w(mix.exs lib LICENSE.md README.md CHANGELOG.md),
+      package: [
+        maintainers: ["Gissandro Gama"],
+        licenses: ["MIT"],
+        links: %{
+          "Github" => @github_url
+        }
+      ],
+      docs: [
+        main: "readme",
+        extras: ["Readme.md", "CHANGELOG.md"]
+      ],
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.json": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -44,7 +69,10 @@ defmodule OrderApi.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:sobelow, "~> 0.8", only: :dev}
+      {:sobelow, "~> 0.8", only: :dev},
+      {:excoveralls, "~> 0.13.4", only: :test},
+      {:ex_doc, "~> 0.23", only: :dev, runtime: false},
+      {:earmark, "~> 1.3", only: [:dev]}
     ]
   end
 
