@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Inclusão de arquivos licença e log para processo de qualidade de projeto
 - Configuração coveralls manter cobertura de testes
 - Adição de ex_doc para gerar documentação
+- Configuração da pipeline de CI usando o travis
 
 ### Changed
 - arquivo `.credo.ex` renomeado para `.credo.exs`
