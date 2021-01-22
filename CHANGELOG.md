@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Logount
 - aumentar a cobertura dos teste
 
+## [0.0.2] - 2014-07-10
+### Added
+- finalização da configuração do deploy
+- configuração do processo de CD
+
 ## [0.0.1] - 2021-01-22
 ### Added
 - inicialição do projeto
