@@ -1,5 +1,9 @@
 # OrderApi
 
+[![Build Status](https://www.travis-ci.com/gissandrogama/delivery_order.svg?branch=main)](https://www.travis-ci.com/gissandrogama/delivery_order)
+
+[![codecov](https://codecov.io/gh/gissandrogama/delivery_order/branch/master/graph/badge.svg?token=5S6KS3h8s6)](https://codecov.io/gh/gissandrogama/delivery_order)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
