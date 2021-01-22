@@ -1,6 +1,6 @@
 language: elixir
 elixir:
-  - 1.10
+  - 1.11
 opt_release:
   - 22.2.6
 
@@ -15,3 +15,6 @@ script:
   - mix credo --strict
   - mix sobelow --config
   - mix coveralls.json
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
