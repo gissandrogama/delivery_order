@@ -10,6 +10,7 @@ addons:
 services:
   - postgresql
 
+required: sudo
 script:
   - mix format --check-formatted --dry-run
   - mix credo --strict
@@ -18,3 +19,10 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: main
