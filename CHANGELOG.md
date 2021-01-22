@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Logount
 - aumentar a cobertura dos teste
 
-## [0.0.1] - 2021-01-12
+## [0.0.1] - 2021-01-22
 ### Added
 - inicialição do projeto
 - Configuração do credo para garantir qualidade
@@ -18,5 +18,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adição de ex_doc para gerar documentação
 
 ### Changed
-- mudança do arquivo de configuração do credo
+- arquivo `.credo.ex` renomeado para `.credo.exs`
 - criando `alias` para manter qualidade código
