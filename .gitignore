@@ -28,3 +28,5 @@ order_api-*.tar
 /priv/static/
 
 /.env
+
+/.process.json
