@@ -1,9 +1,9 @@
 defmodule Insert do
-  alias OrderApi.Repo
-  alias OrderApi.Buyer
+  alias OrderApi.Buyers
 
   def build() do
-    read()
+    build_buyer()
+    |> Buyers.create_buyer()
   end
 
   def get_buyer() do
@@ -26,13 +26,6 @@ defmodule Insert do
     |> Map.put("phones", [phone])
     |> Map.put("billing_infos", billing)
     |> Map.put("orders", [get_order()])
-    |> insert()
-  end
-
-  def insert(buyer) do
-    %Buyer{}
-    |> Buyer.changeset(buyer)
-    |> Repo.insert()
   end
 
   def get_shipping() do
@@ -118,12 +111,6 @@ defmodule Insert do
     |> Map.put("shippings", get_shipping())
   end
 
-  # def insert_order(order) do
-  #   %Order{}
-  #   |> Order.changeset(order)
-  #   |> Repo.insert()
-  # end
-
   def read() do
     "payload.json"
     |> File.read!()
@@ -131,50 +118,42 @@ defmodule Insert do
   end
 end
 
-Insert.build_buyer()
-|> IO.inspect()
+Insert.build()
 
-# def parser() do
-#   buyer = get_buyer()
-#   shipping = get_shipping()
-#   payments = get_payments()
-#   items = get_items()
-#   order = get_order()
 
-#   [
-#     %{
-#       "external_code" => order["id"],
-#       "store_id" => order["store_id"],
-#       "sub_total" => order["total_amount"],
-#       "delivery_free" => order["total_shipping"],
-#       "total" => order["total_amount_with_shipping"],
-#       "country" => shipping["receiver_address"]["country"]["id"],
-#       "state" => shipping["receiver_address"]["state"]["name"],
-#       "city" => shipping["receiver_address"]["city"]["name"],
-#       "district" => shipping["receiver_address"]["neighborhood"]["name"],
-#       "street" => shipping["receiver_address"]["street_name"],
-#       "complement" => "galpao",
-#       "latitude" => shipping["receiver_address"]["latitude"],
-#       "longitude" => shipping["receiver_address"]["longitude"],
-#       "dt_order_create" => order["date_created"],
-#       "postal_code" => shipping["receiver_address"]["zip_code"],
-#       "total_shipping" => order["total_shipping"],
-#       "number" => "0",
-#       "items" => %{
-#           "external_code" => items["item"]["id"],
-#           "name" => items["item"]["title"],
-#           "price" => items["unit_price"],
-#           "quantity" => items["quantity"],
-#           "total" => items["full_unit_price"]
-#         }
-#       ,
-#       "payments" => %{"type" => payments["payment_type"], "value" => payments["total_paid_amount"]},
-#       "customer" => %{
-#         "external_code" => "#{buyer["id"]}",
-#         "name" => buyer["nickname"],
-#         "email" => buyer["email"],
-#         "contact" => "#{buyer["phone"]["area_code"]}#{buyer["phone"]["number"]}"
-#       }
-#     }
-#   ]
-# end
+  [
+    %{
+      "external_code" => order["id"],
+      "store_id" => order["store_id"],
+      "sub_total" => order["total_amount"],
+      "delivery_free" => order["total_shipping"],
+      "total" => order["total_amount_with_shipping"],
+      "country" => shipping["receiver_address"]["country"]["id"],
+      "state" => shipping["receiver_address"]["state"]["name"],
+      "city" => shipping["receiver_address"]["city"]["name"],
+      "district" => shipping["receiver_address"]["neighborhood"]["name"],
+      "street" => shipping["receiver_address"]["street_name"],
+      "complement" => "galpao",
+      "latitude" => shipping["receiver_address"]["latitude"],
+      "longitude" => shipping["receiver_address"]["longitude"],
+      "dt_order_create" => order["date_created"],
+      "postal_code" => shipping["receiver_address"]["zip_code"],
+      "total_shipping" => order["total_shipping"],
+      "number" => "0",
+      "items" => %{
+          "external_code" => items["item"]["id"],
+          "name" => items["item"]["title"],
+          "price" => items["unit_price"],
+          "quantity" => items["quantity"],
+          "total" => items["full_unit_price"]
+        }
+      ,
+      "payments" => %{"type" => payments["payment_type"], "value" => payments["total_paid_amount"]},
+      "customer" => %{
+        "external_code" => "#{buyer["id"]}",
+        "name" => buyer["nickname"],
+        "email" => buyer["email"],
+        "contact" => "#{buyer["phone"]["area_code"]}#{buyer["phone"]["number"]}"
+      }
+    }
+  ]
