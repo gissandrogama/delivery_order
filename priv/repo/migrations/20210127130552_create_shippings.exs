@@ -5,7 +5,7 @@ defmodule OrderApi.Repo.Migrations.CreateShippings do
     create table(:shippings) do
       add :date_created, :string
       add :shipment_type, :string
-      add :external_code, :integer
+      add :external_code, :decimal
       add :order_id, references(:orders, on_delete: :nilify_all)
 
       timestamps()

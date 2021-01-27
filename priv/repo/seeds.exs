@@ -26,28 +26,74 @@ defmodule Insert do
     |> Map.put("phones", [phone])
     |> Map.put("billing_infos", billing)
     |> Map.put("orders", [get_order()])
+    |> insert()
   end
 
-  def insert_buyer(buyer) do
+  def insert(buyer) do
     %Buyer{}
     |> Buyer.changeset(buyer)
     |> Repo.insert()
   end
 
   def get_shipping() do
-    read()
-    |> Map.get("shipping")
+    shipping =
+      read()
+      |> Map.get("shipping")
+      |> Map.delete("receiver_address")
+      |> Map.put("receiver_address", get_receiver())
+
+    shipping
+    |> Map.put("external_code", shipping["id"])
+    |> Map.delete("id")
+  end
+
+  def get_receiver() do
+    address =
+      read()
+      |> Map.get("shipping")
+      |> Map.get("receiver_address")
+
+    country =
+      address
+      |> Map.get("country")
+      |> Map.put("code", address["country"]["id"])
+      |> Map.delete("id")
+
+    neighborhood =
+      address
+      |> Map.get("neighborhood")
+      |> Map.put("code", address["neighborhood"]["id"])
+      |> Map.delete("id")
+
+    address
+    |> Map.put("external_code", address["id"])
+    |> Map.delete("id")
+    |> Map.delete("country")
+    |> Map.put("country", country)
+    |> Map.delete("neighborhood")
+    |> Map.put("neighborhood", neighborhood)
   end
 
   def get_payments() do
     read()
     |> Map.get("payments")
-    |> Enum.fetch!(0)
+    |> Enum.map(&Map.put(&1, "external_code", &1["id"]))
+    |> Enum.map(&Map.delete(&1, "id"))
   end
 
   def get_items() do
+    item =
+      read()
+      |> Map.get("order_items")
+      |> Enum.map(&Map.get(&1, "item"))
+      |> Enum.map(&Map.put(&1, "external_code", &1["id"]))
+      |> Enum.map(&Map.delete(&1, "id"))
+      |> Enum.fetch!(0)
+
     read()
     |> Map.get("order_items")
+    |> Enum.map(&Map.delete(&1, "item"))
+    |> Enum.map(&Map.put(&1, "item", item))
   end
 
   def get_order() do
@@ -69,7 +115,14 @@ defmodule Insert do
     order
     |> Map.put("payments", get_payments())
     |> Map.put("order_items", get_items())
+    |> Map.put("shippings", get_shipping())
   end
+
+  # def insert_order(order) do
+  #   %Order{}
+  #   |> Order.changeset(order)
+  #   |> Repo.insert()
+  # end
 
   def read() do
     "payload.json"
@@ -78,7 +131,7 @@ defmodule Insert do
   end
 end
 
-Insert.get_shipping()
+Insert.build_buyer()
 |> IO.inspect()
 
 # def parser() do

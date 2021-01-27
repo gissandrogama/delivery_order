@@ -1,7 +1,7 @@
 defmodule OrderApi.Neighborhood do
   use Ecto.Schema
   import Ecto.Changeset
-  alias OrderApi.Neighborhood
+  alias OrderApi.ReceiverAddress
 
   schema "neighborhoods" do
     field :code, :string
@@ -16,6 +16,6 @@ defmodule OrderApi.Neighborhood do
     neighborhood
     |> cast(attrs, [:code, :name, :receiver_address_id])
     |> foreign_key_constraint(:receiver_address_id)
-    |> validate_required([:code, :name])
+    |> validate_required([:name])
   end
 end

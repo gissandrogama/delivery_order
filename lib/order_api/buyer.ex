@@ -11,7 +11,7 @@ defmodule OrderApi.Buyer do
     field :last_name, :string
     field :nickname, :string
     has_many :phones, Phone
-    has_many :ordes, Order
+    has_many :orders, Order
     has_one :billing_infos, BillingInfos
 
     timestamps()

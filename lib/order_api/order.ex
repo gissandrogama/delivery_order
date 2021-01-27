@@ -19,8 +19,8 @@ defmodule OrderApi.Order do
     field :total_shipping, :decimal
     belongs_to :buyer, Buyer
     has_many :order_items, OrderItem
-    has_one :payment, Payment
-    has_one :shipping, Shipping
+    has_many :payments, Payment
+    has_one :shippings, Shipping
 
     timestamps()
   end
@@ -44,9 +44,9 @@ defmodule OrderApi.Order do
       :buyer_id
     ])
     |> foreign_key_constraint(:buyer_id)
-    |> cast_assoc(:payment, with: &Payment.changeset/2)
+    |> cast_assoc(:payments, with: &Payment.changeset/2)
     |> cast_assoc(:order_items, with: &OrderItem.changeset/2)
-    |> cast_assoc(:shipping, with: &Shipping.changeset/2)
+    |> cast_assoc(:shippings, with: &Shipping.changeset/2)
     |> validate_required([
       :external_code,
       :store_id,

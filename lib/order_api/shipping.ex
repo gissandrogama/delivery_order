@@ -6,7 +6,7 @@ defmodule OrderApi.Shipping do
 
   schema "shippings" do
     field :date_created, :string
-    field :external_code, :integer
+    field :external_code, :decimal
     field :shipment_type, :string
     belongs_to :order, Order
     has_one :receiver_address, ReceiverAddress

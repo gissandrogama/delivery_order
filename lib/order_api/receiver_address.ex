@@ -17,7 +17,7 @@ defmodule OrderApi.ReceiverAddress do
     has_one :state, State
     has_one :city, City
     has_one :country, Country
-    has_one :neighborhoods, Neighborhood
+    has_one :neighborhood, Neighborhood
 
     timestamps()
   end
@@ -41,7 +41,7 @@ defmodule OrderApi.ReceiverAddress do
     |> cast_assoc(:state, with: &State.changeset/2)
     |> cast_assoc(:city, with: &City.changeset/2)
     |> cast_assoc(:country, with: &Country.changeset/2)
-    |> cast_assoc(:neighborhoods, with: &Neighborhood.changeset/2)
+    |> cast_assoc(:neighborhood, with: &Neighborhood.changeset/2)
     |> validate_required([
       :address_line,
       :comment,
