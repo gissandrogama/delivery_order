@@ -1,8 +1,11 @@
 defmodule OrderApi.Buyer do
+  @moduledoc """
+  table bank schema buyers
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias OrderApi.{BillingInfos, Phone, Order}
+  alias OrderApi.{BillingInfos, Order, Phone}
 
   schema "buyers" do
     field :email, :string

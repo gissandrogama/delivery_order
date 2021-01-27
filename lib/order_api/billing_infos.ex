@@ -1,4 +1,7 @@
 defmodule OrderApi.BillingInfos do
+  @moduledoc """
+  table bank schema billing_infos
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

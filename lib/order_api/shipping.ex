@@ -1,4 +1,7 @@
 defmodule OrderApi.Shipping do
+  @moduledoc """
+  table bank schema shippings
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -10,7 +13,6 @@ defmodule OrderApi.Shipping do
     field :shipment_type, :string
     belongs_to :order, Order
     has_one :receiver_address, ReceiverAddress
-
 
     timestamps()
   end

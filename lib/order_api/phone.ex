@@ -1,4 +1,7 @@
 defmodule OrderApi.Phone do
+  @moduledoc """
+  table bank schema phones
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

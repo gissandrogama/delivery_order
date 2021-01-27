@@ -1,4 +1,7 @@
 defmodule OrderApi.Payment do
+  @moduledoc """
+  table bank schema payments
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

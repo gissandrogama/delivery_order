@@ -1,4 +1,7 @@
 defmodule OrderApi.City do
+  @moduledoc """
+  table bank schema citys
+  """
   use Ecto.Schema
   import Ecto.Changeset
   alias OrderApi.ReceiverAddress

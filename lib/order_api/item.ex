@@ -1,4 +1,7 @@
 defmodule OrderApi.Item do
+  @moduledoc """
+  table bank schema items
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

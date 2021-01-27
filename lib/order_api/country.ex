@@ -1,8 +1,10 @@
 defmodule OrderApi.Country do
+  @moduledoc """
+  table bank schema countrys
+  """
   use Ecto.Schema
   import Ecto.Changeset
   alias OrderApi.ReceiverAddress
-
 
   schema "countrys" do
     field :code, :string

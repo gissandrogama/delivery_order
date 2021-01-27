@@ -1,4 +1,7 @@
 defmodule OrderApi.State do
+  @moduledoc """
+  table bank schema states
+  """
   use Ecto.Schema
   import Ecto.Changeset
   alias OrderApi.ReceiverAddress

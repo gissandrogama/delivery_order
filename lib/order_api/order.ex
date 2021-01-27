@@ -1,8 +1,11 @@
 defmodule OrderApi.Order do
+  @moduledoc """
+  table bank schema orders
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias OrderApi.{Buyer, Payment, OrderItem, Shipping}
+  alias OrderApi.{Buyer, OrderItem, Payment, Shipping}
 
   schema "orders" do
     field :date_closed, :string
