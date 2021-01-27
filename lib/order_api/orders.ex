@@ -4,7 +4,7 @@ defmodule OrderApi.Orders do
   """
 
   import Ecto.Query, warn: false
-  alias OrderApi.{Repo, Order}
+  alias OrderApi.{Order, Repo}
 
   @doc """
   function returns `orders` with preload of `orders`, `phones` and` billings_infos`
