@@ -6,17 +6,6 @@ defmodule Insert do
     read()
   end
 
-  # def build_order(payments) do
-  #   payments
-  #   |> Enum.group_by(& &1["payments"], &Map.delete(&1, "payments"))
-  # end
-
-  # # def insert(customer) do
-  # #   %Customer{}
-  # #   |> Customer.changeset(customer)
-  # #   |> Repo.insert()
-  # # end
-
   def get_buyer() do
     buyer =
       read()
@@ -36,34 +25,29 @@ defmodule Insert do
     |> Map.delete("billing_info")
     |> Map.put("phones", [phone])
     |> Map.put("billing_infos", billing)
-    |> Map.put("orders", [get_order])
-    |> insert_buyer()
+    |> Map.put("orders", [get_order()])
   end
 
   def insert_buyer(buyer) do
-    IO.inspect(buyer)
-
     %Buyer{}
     |> Buyer.changeset(buyer)
     |> Repo.insert()
   end
 
-  # def get_shipping() do
-  #   read()
-  #   |> Map.get("shipping")
-  # end
+  def get_shipping() do
+    read()
+    |> Map.get("shipping")
+  end
 
-  # def get_payments() do
-  #   read()
-  #   |> Map.get("payments")
-  #   |> Enum.fetch!(0)
-  # end
+  def get_payments() do
+    read()
+    |> Map.get("payments")
+    |> Enum.fetch!(0)
+  end
 
   def get_items() do
     read()
     |> Map.get("order_items")
-    |> Enum.group_by(& &1["item"], &Map.delete(&1, "item"))
-    |> Map.to_list()
   end
 
   def get_order() do
@@ -78,6 +62,13 @@ defmodule Insert do
     |> Map.put("external_code", order["id"])
     |> Map.put("delivery_fee", order["total_shipping"])
     |> Map.delete("id")
+    |> build_order()
+  end
+
+  def build_order(order) do
+    order
+    |> Map.put("payments", get_payments())
+    |> Map.put("order_items", get_items())
   end
 
   def read() do
@@ -87,7 +78,7 @@ defmodule Insert do
   end
 end
 
-Insert.get_order()
+Insert.get_shipping()
 |> IO.inspect()
 
 # def parser() do

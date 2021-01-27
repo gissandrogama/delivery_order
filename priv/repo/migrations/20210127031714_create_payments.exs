@@ -16,7 +16,7 @@ defmodule OrderApi.Repo.Migrations.CreatePayments do
       add :installement_amount, :decimal
       add :date_approved, :string
       add :date_created, :string
-      add :order_by_id, references(:orders, on_delete: :nothing)
+      add :order_by_id, references(:orders, on_delete: :nilify_all)
 
       timestamps()
     end

@@ -15,7 +15,7 @@ defmodule OrderApi.Repo.Migrations.CreateOrders do
       add :expiration_date, :string
       add :total_shipping, :decimal
       add :status, :string
-      add :buyer_id, references(:buyers, on_delete: :nothing)
+      add :buyer_id, references(:buyers, on_delete: :nilify_all)
 
       timestamps()
     end

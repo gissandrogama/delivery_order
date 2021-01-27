@@ -2,7 +2,7 @@ defmodule OrderApi.Order do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias OrderApi.{Buyer, Payment}
+  alias OrderApi.{Buyer, Payment, OrderItem, Shipping}
 
   schema "orders" do
     field :date_closed, :string
@@ -18,7 +18,9 @@ defmodule OrderApi.Order do
     field :total_amount_with_shipping, :decimal
     field :total_shipping, :decimal
     belongs_to :buyer, Buyer
+    has_many :order_items, OrderItem
     has_one :payment, Payment
+    has_one :shipping, Shipping
 
     timestamps()
   end
@@ -43,6 +45,8 @@ defmodule OrderApi.Order do
     ])
     |> foreign_key_constraint(:buyer_id)
     |> cast_assoc(:payment, with: &Payment.changeset/2)
+    |> cast_assoc(:order_items, with: &OrderItem.changeset/2)
+    |> cast_assoc(:shipping, with: &Shipping.changeset/2)
     |> validate_required([
       :external_code,
       :store_id,
