@@ -6,7 +6,7 @@ defmodule OrderApi.PayloadFixture do
   alias OrderApi.Buyers
 
   def build do
-    build_buyer()
+    data_structure()
     |> Buyers.create_buyer()
   end
 
@@ -20,7 +20,7 @@ defmodule OrderApi.PayloadFixture do
     |> Map.delete("id")
   end
 
-  def build_buyer do
+  def data_structure do
     phone = Map.get(get_buyer(), "phone")
     billing = Map.get(get_buyer(), "billing_info")
 

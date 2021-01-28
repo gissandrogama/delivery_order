@@ -21,7 +21,7 @@ defmodule OrderApi.MixProject do
       ],
       docs: [
         main: "readme",
-        extras: ["Readme.md", "CHANGELOG.md"]
+        extras: ["README.md", "CHANGELOG.md"]
       ],
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),

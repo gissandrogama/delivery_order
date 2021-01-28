@@ -7,6 +7,8 @@ defmodule OrderApiWeb.Router do
 
   scope "/api", OrderApiWeb do
     pipe_through :api
+
+    get "/parse", ParseController, :index
   end
 
   # Enables LiveDashboard only for development
