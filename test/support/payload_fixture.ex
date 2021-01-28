@@ -20,7 +20,6 @@ defmodule OrderApi.PayloadFixture do
     |> Map.delete("id")
   end
 
-
   def data_structure do
     phone = Map.get(get_buyer(), "phone")
     billing = Map.get(get_buyer(), "billing_info")
