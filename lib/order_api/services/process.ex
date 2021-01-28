@@ -6,8 +6,8 @@ defmodule OrderApi.Services.Process do
   alias OrderApi.{Address, OrderItems, Orders}
 
   @doc """
-  A função structure recupera dados do banco de dados e monta uma estrutura, que faz parte
-  de uma requisição do tipo `post` para api no host `"https://delivery-center-recruitment-ap.herokuapp.com/"`
+  The structure function retrieves data from the database and assembles a structure, which is part of
+  of a `post` request for host api`"https://delivery-center-recruitment-ap.herokuapp.com/"`
 
   ## Example
 
@@ -70,7 +70,7 @@ defmodule OrderApi.Services.Process do
     |> Jason.encode!()
   end
 
-  def first(payment) do
+  defp first(payment) do
     [[head | _tail]] = payment
     head
   end
