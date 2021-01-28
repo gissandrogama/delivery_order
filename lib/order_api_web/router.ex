@@ -2,6 +2,7 @@ defmodule OrderApiWeb.Router do
   use OrderApiWeb, :router
 
   pipeline :api do
+    plug CORSPlug
     plug :accepts, ["json"]
   end
 
