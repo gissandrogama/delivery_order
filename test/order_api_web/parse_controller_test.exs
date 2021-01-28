@@ -4,7 +4,7 @@ defmodule OrderApiWeb.ParseControllerTest do
   alias OrderApi.PayloadFixture
 
   describe "index" do
-    test "lists all posts", %{conn: conn} do
+    test "parse was created and accepted by api", %{conn: conn} do
       PayloadFixture.build()
       conn = get(conn, Routes.parse_path(conn, :index))
       assert %{"message" => %{}} = json_response(conn, 200)
