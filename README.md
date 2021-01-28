@@ -107,3 +107,8 @@ Para gerar a documentação da aplicação só excutar o comando:
 ```sh
 $ mix docs
 ```
+
+# Modelo do banco de dados
+
+O modelo do banco de dados está no <https://dbdiagram.io/d/600b0a9380d742080a377e85>.
+
