@@ -14,8 +14,6 @@ defmodule OrderApi.Buyers do
 
        iex> list_buyer()
        [%Buyer{}, ...]
-
-
   """
   def list_buyers do
     Repo.all(Buyer)
