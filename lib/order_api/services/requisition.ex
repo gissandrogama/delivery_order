@@ -20,6 +20,6 @@ defmodule OrderApi.Services.Requisition do
 
     body = Process.structure()
 
-    HTTPoison.post(@url, [body], headers)
+    HTTPoison.post(@url, body, headers)
   end
 end
