@@ -1,8 +1,6 @@
 defmodule OrderApi.Services.SolicitTest do
   use OrderApi.DataCase
-  
   import OrderApi.PayloadFixture
-
   alias OrderApi.Services.Solicit
 
   describe "run/0" do

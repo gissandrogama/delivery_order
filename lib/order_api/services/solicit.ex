@@ -17,7 +17,7 @@ defmodule OrderApi.Services.Solicit do
        iex> Solicit.run()
        {:ok, %HTTPoison.Response{}}
   """
-  def run() do
+  def run do
     headers = [{"X-Sent", "22h07 - 27/01/21"}, {"Content-Type", "application/json"}]
 
     body = Process.structure()
