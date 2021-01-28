@@ -8,7 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Logount
 - aumentar a cobertura dos teste
 
-## [0.0.2] - 2014-07-10
+## [0.0.2] - 2021-07-28
+### Added
+- criação de modulo `process`, que organiza a estrutura para enviar para api
+- criação de modulo `solicit`, que envia uma requisição `post` para api
+- organização da documentação
+- escrita do `README`
+- Modulos e função que auxiliam no processo de estrutura de dados
+- Criação do controller para exibir que o parse e a requisição ocorreram
+
+## [0.0.2] - 2021-01-23
 ### Added
 - finalização da configuração do deploy
 - configuração do processo de CD
