@@ -1,12 +1,12 @@
 defmodule Insert do
   alias OrderApi.Buyers
 
-  def build() do
-    build_buyer()
+  def build do
+    data_structure()
     |> Buyers.create_buyer()
   end
 
-  def get_buyer() do
+  def get_buyer do
     buyer =
       read()
       |> Map.get("buyer")
@@ -16,7 +16,7 @@ defmodule Insert do
     |> Map.delete("id")
   end
 
-  def build_buyer() do
+  def data_structure do
     phone = Map.get(get_buyer(), "phone")
     billing = Map.get(get_buyer(), "billing_info")
 
@@ -28,7 +28,7 @@ defmodule Insert do
     |> Map.put("orders", [get_order()])
   end
 
-  def get_shipping() do
+  def get_shipping do
     shipping =
       read()
       |> Map.get("shipping")
@@ -40,7 +40,7 @@ defmodule Insert do
     |> Map.delete("id")
   end
 
-  def get_receiver() do
+  def get_receiver do
     address =
       read()
       |> Map.get("shipping")
@@ -67,14 +67,14 @@ defmodule Insert do
     |> Map.put("neighborhood", neighborhood)
   end
 
-  def get_payments() do
+  def get_payments do
     read()
     |> Map.get("payments")
     |> Enum.map(&Map.put(&1, "external_code", &1["id"]))
     |> Enum.map(&Map.delete(&1, "id"))
   end
 
-  def get_items() do
+  def get_items do
     item =
       read()
       |> Map.get("order_items")
@@ -89,7 +89,7 @@ defmodule Insert do
     |> Enum.map(&Map.put(&1, "item", item))
   end
 
-  def get_order() do
+  def get_order do
     order =
       read()
       |> Map.delete("order_items")
