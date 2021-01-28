@@ -10,7 +10,6 @@ defmodule OrderApi.OrderItems do
   function returns `order items` with preload of `items`
 
 
-  
   ## Example
 
        iex> list_items()

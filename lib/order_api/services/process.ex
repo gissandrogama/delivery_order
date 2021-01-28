@@ -3,7 +3,7 @@ defmodule OrderApi.Services.Process do
   this module has a function that creates a structure to be sent to an api
   """
 
-  alias OrderApi.{Address, Orders, OrderItems}
+  alias OrderApi.{Address, OrderItems, Orders}
 
   @doc """
   A função structure recupera dados do banco de dados e monta uma estrutura, que faz parte
