@@ -74,7 +74,7 @@ defmodule OrderApi.MixProject do
       {:ex_doc, "~> 0.23", only: :dev, runtime: false},
       {:earmark, "~> 1.3", only: [:dev]},
       {:httpoison, "~> 1.8"},
-      {:cors_plug , "~> 2.0"}
+      {:cors_plug, "~> 2.0"}
     ]
   end
 
