@@ -72,7 +72,8 @@ defmodule OrderApi.MixProject do
       {:sobelow, "~> 0.8", only: :dev},
       {:excoveralls, "~> 0.13.4", only: :test},
       {:ex_doc, "~> 0.23", only: :dev, runtime: false},
-      {:earmark, "~> 1.3", only: [:dev]}
+      {:earmark, "~> 1.3", only: [:dev]},
+      {:httpoison, "~> 1.8"}
     ]
   end
 
